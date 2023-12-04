@@ -1,0 +1,5 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^(.*/)?robots\.txt$ [NC]
+RewriteCond %{REQUEST_URI} !^(.*/)?sitemap\.xml$ [NC]
+RewriteRule ^(.*)$ index.php?id=$1 [QSA]

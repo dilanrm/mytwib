@@ -1,0 +1,54 @@
+<?php require './header.php' ?>
+
+<main role="main">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <!-- <h1 class="jumbotron-heading"><?php echo $settings->judul ?></h1>
+            <p class="lead text-muted"><?php echo $settings->deskrip ?></p> -->
+            <p>
+                <a href="./tambah.php" class="btn btn-lg btn-success my-2">Tambah bingkai baru</a>
+                <a href="./category.php" class="btn btn-lg btn-info my-2">List kategori</a>
+                <a href="./contact.php" class="btn btn-lg btn-primary my-2">Edit halaman contact</a>
+                <a href="./privacy.php" class="btn btn-lg btn-warning my-2" style="color:#fff">Edit Privacy & Policy</a>
+                <a href="./setting.php" class="btn btn-lg btn-secondary my-2">Ubah settingan website</a>
+            </p>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+                <?php
+                foreach ($frames as $key => $value) {
+                ?>
+                    <div class="col-lg-3 col-md-5 col-sm-4 col-10">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="<?php echo $base_url . '../frames/' . $value->file ?>" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $value->name ?></h5>
+                                <p class="card-text"><?php echo $value->deskrip ?></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a onclick="return confirm('Anda yakin?')" href="./hapus.php?id=<?php echo $value->id ?>&file=<?php echo $value->file ?>" class="btn btn-md btn-outline-danger">hapus</a>
+                                        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                                    </div>
+                                    <!-- <small class="text-muted">9 mins</small> -->
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Category: <?php echo $value->kategori ?></small>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<?php require_once '../footer.php' ?>
